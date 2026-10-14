@@ -1,0 +1,93 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #f2f3f5;
+  --card: #ffffff;
+  --ink: #111111;
+  --housing: #c9ced4;
+  --red: #e8342e;
+  --yellow: #f7d117;
+  --green: #2fa44f;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  background: var(--bg);
+  font-family: Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--ink);
+  padding: 24px;
+}
+/* Frame réplica del Figma: iPad mini 8.3 - 1, blanco, layout horizontal */
+.frame {
+  width: min(1024px, 100%);
+  min-height: 480px;
+  background: var(--card);
+  border: 1px solid #dfe3e8;
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 48px;
+  padding: 64px 72px;
+}
+.left { max-width: 480px; }
+.top-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.status-label {
+  display: inline-block;
+  margin: 0;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: #f4f5f7;
+  padding: 4px 20px;
+}
+.badge {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #111;
+  white-space: nowrap;
+}
+.badge.live { background: #e6f6ec; border-color: var(--green); color: #14632c; }
+.badge.demo { background: #fff8e1; border-color: #9a8200; color: #7a6600; }
+.status-value { margin: 16px 0 4px; font-size: 28px; font-weight: 700; }
+.countdown { margin: 0 0 12px; font-size: 22px; }
+.countdown strong { font-variant-numeric: tabular-nums; }
+.progress { height: 8px; background: #eceff1; border-radius: 999px; overflow: hidden; margin-bottom: 16px; }
+.progress > div { height: 100%; width: 0%; background: #111; transition: width .4s linear; }
+.hint { margin: 0; color: #555; font-size: 14px; }
+.src { margin: 6px 0 0; color: #888; font-size: 13px; }
+
+/* Semáforo vertical como en Figma */
+.right { display: grid; place-items: center; }
+.traffic-light {
+  background: var(--housing);
+  border-radius: 8px;
+  padding: 20px 22px;
+  display: grid;
+  gap: 16px;
+}
+.light {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  opacity: 0.25;
+  transition: opacity .2s, box-shadow .2s;
+}
+.light.red { background: var(--red); }
+.light.yellow { background: var(--yellow); }
+.light.green { background: var(--green); }
+.light.active { opacity: 1; box-shadow: 0 0 24px #ffffffaa, 0 0 12px currentColor; }
+
+.foot { font-size: 13px; color: #666; text-align: center; max-width: 1024px; }
+.foot code { background: #e8eaed; padding: 1px 6px; border-radius: 4px; }
+
+@media (max-width: 700px) {
+  .frame { grid-template-columns: 1fr; padding: 32px; gap: 24px; text-align: center; }
+  .left { max-width: none; }
+  .top-row, .right { justify-content: center; }
+}
