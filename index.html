@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semáforo Arduino — Status</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="frame" aria-label="Semáforo iPad mini">
+    <section class="left">
+      <div class="top-row">
+        <h1 class="status-label">Status</h1>
+        <span id="connBadge" class="badge demo" role="status">● Modo simulación</span>
+      </div>
+
+      <p id="statusValue" class="status-value" role="status" aria-live="polite">Stop</p>
+      <p class="countdown">Cambia en <strong><span id="countdown">20</span> s</strong></p>
+      <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+
+      <p id="pinInfo" class="hint">Rojo: GPIO 2 · Amarillo: GPIO 4 · Verde: GPIO 5</p>
+      <p id="srcInfo" class="src">Buscando Arduino…</p>
+    </section>
+
+    <section class="right" aria-label="Semáforo">
+      <div class="traffic-light">
+        <div class="light red" id="lightRed" aria-label="Rojo"></div>
+        <div class="light yellow" id="lightYellow" aria-label="Amarillo"></div>
+        <div class="light green" id="lightGreen" aria-label="Verde"></div>
+      </div>
+    </section>
+  </main>
+  <footer class="foot">
+    Servidor: <code>server.ps1</code> en <code>http://localhost:8000</code> ·
+    El Arduino envía su estado por USB y <code>serial_bridge.ps1</code> lo reenvía al servidor ·
+    Sin Arduino la página simula con los mismos tiempos (20/5/15 s).
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
